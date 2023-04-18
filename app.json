@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "react-native-calculator",
+    "slug": "react-native-calculator",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon-sun.svg",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
