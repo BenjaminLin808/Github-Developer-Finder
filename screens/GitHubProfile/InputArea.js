@@ -1,7 +1,13 @@
+import { useState } from "react";
 import { View, Image, TextInput, Pressable, StyleSheet } from "react-native";
 import { MyText, MyTextBold } from "../../components/MyText";
 
-const InputArea = () => {
+const InputArea = ({ searchUser, loading }) => {
+  const [username, setUsername] = useState("");
+
+  const handleSubmit = () => {
+    searchUser(username);
+  };
   return (
     <View style={styles.inputArea}>
       <View style={styles.input}>
@@ -10,14 +16,26 @@ const InputArea = () => {
           style={{ marginRight: 10 }}
         />
         <TextInput
-          value={""}
+          style={{
+            color: "#fff",
+            fontFamily: "SpaceMono-Regular",
+            underlineColorAndroid: "transparent",
+          }}
+          value={username}
           placeholder="Enter GitHub username"
           keyboardType="default"
           placeholderTextColor={"#fff"}
+          onChangeText={(text) => setUsername(text)}
+          disabled={username === "" || loading}
         />
       </View>
 
-      <Pressable style={styles.button}>
+      <Pressable
+        style={styles.button}
+        onPress={() => {
+          handleSubmit();
+        }}
+      >
         <MyTextBold>Search</MyTextBold>
       </Pressable>
     </View>

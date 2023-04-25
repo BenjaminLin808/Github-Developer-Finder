@@ -1,11 +1,7 @@
 import { SafeAreaView, StyleSheet, StatusBar, View } from "react-native";
-import { useCallback } from "react";
 import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
 import GitHubProfile from "./screens/GitHubProfile";
-
-// Keep the splash screen visible while we fetch resources
-// SplashScreen.preventAutoHideAsync();
+import axios from "axios";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -13,16 +9,9 @@ const App = () => {
     "SpaceMono-Bold": require("./assets/fonts/SpaceMono-Bold.ttf"),
   });
 
-  // const onLayoutRootView = useCallback(async () => {
-  //   if (fontsLoaded) {
-  //     await SplashScreen.hideAsync();
-  //   }
-  // }, [fontsLoaded]);
-
   if (!fontsLoaded) {
     return null;
   }
-
   return (
     <>
       <StatusBar barStyle="light-content" />

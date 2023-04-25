@@ -5,7 +5,11 @@ import Company from "../../components/Company";
 import Website from "../../components/Website";
 import Twitter from "../../components/Twitter";
 
-const Card = () => {
+const Card = ({ user, error, loading }) => {
+  // when loading is true, return null
+  if (loading) {
+    return null;
+  }
   return (
     <View style={styles.card}>
       <View style={{ flexDirection: "row" }}>
@@ -14,9 +18,13 @@ const Card = () => {
           style={styles.avatar}
         />
         <View>
-          <MyTextBold style={{ fontSize: 24 }}>Name</MyTextBold>
-          <MyText style={{ color: "#0079ff" }}>@username</MyText>
-          <MyText>Join time</MyText>
+          <MyTextBold style={{ fontSize: 24 }}>
+            {user.name ? user.name : ""}
+          </MyTextBold>
+          <MyText style={{ color: "#0079ff" }}>
+            {user.login ? `@${user.login}` : ""}
+          </MyText>
+          <MyText></MyText>
         </View>
       </View>
       <View
@@ -27,38 +35,48 @@ const Card = () => {
           paddingBottom: 20,
         }}
       >
-        <MyText style={{ color: "#697c9a" }}>This profile has no bio</MyText>
+        <MyText style={{ color: "#697c9a" }}>
+          {user.bio ? user.bio : "This profile has no bio"}
+        </MyText>
       </View>
       <View style={styles.status}>
         <View>
           <MyText style={styles.statusLabel}>Repos</MyText>
-          <MyTextBold style={styles.statusNumber}>0</MyTextBold>
+          <MyTextBold style={styles.statusNumber}>
+            {user.public_repos ? user.public_repos : "0"}
+          </MyTextBold>
         </View>
         <View>
           <MyText style={styles.statusLabel}>Followers</MyText>
-          <MyTextBold style={styles.statusNumber}>1</MyTextBold>
+          <MyTextBold style={styles.statusNumber}>
+            {user.followers ? user.followers : "0"}
+          </MyTextBold>
         </View>
         <View>
           <MyText style={styles.statusLabel}>Following</MyText>
-          <MyTextBold style={styles.statusNumber}>0</MyTextBold>
+          <MyTextBold style={styles.statusNumber}>
+            {user.following ? user.following : "0"}
+          </MyTextBold>
         </View>
       </View>
       <View style={{ marginTop: 20 }}>
         <View style={styles.iconLabel}>
           <Location color="white" style={styles.icon} />
-          <MyText>Place</MyText>
+          <MyText>{user.location ? user.location : "Not available"}</MyText>
         </View>
         <View style={styles.iconLabel}>
           <Twitter color="white" style={styles.icon} />
-          <MyText>Twitter</MyText>
+          <MyText>
+            {user.twitter_username ? user.twitter_username : "Not available"}
+          </MyText>
         </View>
         <View style={styles.iconLabel}>
           <Website color="white" style={styles.icon} />
-          <MyText>Website</MyText>
+          <MyText>{user.url ? user.url : "Not available"}</MyText>
         </View>
         <View style={styles.iconLabel}>
           <Company color="white" style={styles.icon} />
-          <MyText>Company</MyText>
+          <MyText>{user.company ? user.company : "Not available"}</MyText>
         </View>
       </View>
     </View>
