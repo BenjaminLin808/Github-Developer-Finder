@@ -13,10 +13,7 @@ const Card = ({ user, error, loading }) => {
   return (
     <View style={styles.card}>
       <View style={{ flexDirection: "row" }}>
-        <Image
-          source={require("../../assets/images/image-user-placeholder.png")}
-          style={styles.avatar}
-        />
+        <Image source={{ uri: user.avatar_url }} style={styles.avatar} />
         <View>
           <MyTextBold style={{ fontSize: 24 }}>
             {user.name ? user.name : ""}
@@ -43,14 +40,12 @@ const Card = ({ user, error, loading }) => {
         <View>
           <MyText style={styles.statusLabel}>Repos</MyText>
           <MyTextBold style={styles.statusNumber}>
-            {user.public_repos ? user.public_repos : "0"}
+            {user.public_repos}
           </MyTextBold>
         </View>
         <View>
           <MyText style={styles.statusLabel}>Followers</MyText>
-          <MyTextBold style={styles.statusNumber}>
-            {user.followers ? user.followers : "0"}
-          </MyTextBold>
+          <MyTextBold style={styles.statusNumber}>{user.followers}</MyTextBold>
         </View>
         <View>
           <MyText style={styles.statusLabel}>Following</MyText>
@@ -61,22 +56,40 @@ const Card = ({ user, error, loading }) => {
       </View>
       <View style={{ marginTop: 20 }}>
         <View style={styles.iconLabel}>
-          <Location color="white" style={styles.icon} />
-          <MyText>{user.location ? user.location : "Not available"}</MyText>
+          <Location
+            color={user.location ? "white" : "#4b6a9b"}
+            style={styles.icon}
+          />
+          <MyText style={{ color: user.location ? "white" : "#4b6a9b" }}>
+            {user.location ? user.location : "Not available"}
+          </MyText>
         </View>
         <View style={styles.iconLabel}>
-          <Twitter color="white" style={styles.icon} />
-          <MyText>
+          <Twitter
+            color={user.twitter_username ? "white" : "#4b6a9b"}
+            style={styles.icon}
+          />
+          <MyText style={{ color: user.location ? "white" : "#4b6a9b" }}>
             {user.twitter_username ? user.twitter_username : "Not available"}
           </MyText>
         </View>
         <View style={styles.iconLabel}>
-          <Website color="white" style={styles.icon} />
-          <MyText>{user.url ? user.url : "Not available"}</MyText>
+          <Website
+            color={user.blog ? "white" : "#4b6a9b"}
+            style={styles.icon}
+          />
+          <MyText style={{ color: user.location ? "white" : "#4b6a9b" }}>
+            {user.blog ? user.blog : "Not available"}
+          </MyText>
         </View>
         <View style={styles.iconLabel}>
-          <Company color="white" style={styles.icon} />
-          <MyText>{user.company ? user.company : "Not available"}</MyText>
+          <Company
+            color={user.company ? "white" : "#4b6a9b"}
+            style={styles.icon}
+          />
+          <MyText style={{ color: user.location ? "white" : "#4b6a9b" }}>
+            {user.company ? user.company : "Not available"}
+          </MyText>
         </View>
       </View>
     </View>
