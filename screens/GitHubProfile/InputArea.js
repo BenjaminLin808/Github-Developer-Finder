@@ -19,7 +19,6 @@ const InputArea = ({ searchUser, loading }) => {
           style={{
             color: "#fff",
             fontFamily: "SpaceMono-Regular",
-            underlineColorAndroid: "transparent",
           }}
           value={username}
           placeholder="Enter GitHub username"

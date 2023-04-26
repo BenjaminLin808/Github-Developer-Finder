@@ -38,7 +38,7 @@ const GitHubProfile = () => {
     <View style={{ paddingHorizontal: 20 }}>
       <Header />
       <InputArea searchUser={searchUser} loading={loading} />
-      <Card user={user} loading={loading} error={error} />
+      {user ? <Card user={user} loading={loading} error={error} /> : <></>}
     </View>
   );
 

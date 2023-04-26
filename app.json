@@ -6,6 +6,11 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon-sun.svg",
     "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "assetBundlePatterns": [
       "**/*"
     ],

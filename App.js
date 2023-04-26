@@ -1,7 +1,17 @@
-import { SafeAreaView, StyleSheet, StatusBar, View } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  StatusBar,
+  View,
+  ScrollView,
+} from "react-native";
 import { useFonts } from "expo-font";
 import GitHubProfile from "./screens/GitHubProfile";
-import axios from "axios";
+import * as SplashScreen from "expo-splash-screen";
+import { useCallback } from "react";
+
+// keep splash screen visible while the app is loading
+SplashScreen.preventAutoHideAsync();
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -9,16 +19,27 @@ const App = () => {
     "SpaceMono-Bold": require("./assets/fonts/SpaceMono-Bold.ttf"),
   });
 
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
   if (!fontsLoaded) {
     return null;
   }
+
   return (
     <>
       <StatusBar barStyle="light-content" />
       <SafeAreaView style={styles.container}>
-        <View style={styles.subContainer}>
+        <ScrollView
+          style={styles.subContainer}
+          onLayout={onLayoutRootView}
+          keyboardShouldPersistTaps="handled"
+        >
           <GitHubProfile />
-        </View>
+        </ScrollView>
       </SafeAreaView>
     </>
   );
