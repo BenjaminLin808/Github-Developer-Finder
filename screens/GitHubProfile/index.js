@@ -20,6 +20,7 @@ const GitHubProfile = () => {
   const searchUser = async (username) => {
     setLoading(true);
     setError(null);
+    setUser(null);
 
     try {
       const response = await axios.get(

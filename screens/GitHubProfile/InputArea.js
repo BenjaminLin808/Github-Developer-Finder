@@ -8,6 +8,7 @@ const InputArea = ({ searchUser, loading }) => {
   const handleSubmit = () => {
     searchUser(username);
   };
+
   return (
     <View style={styles.inputArea}>
       <View style={styles.input}>
@@ -30,6 +31,7 @@ const InputArea = ({ searchUser, loading }) => {
       </View>
 
       <Pressable
+        testID="searchButton"
         style={styles.button}
         onPress={() => {
           handleSubmit();

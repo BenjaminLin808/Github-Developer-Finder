@@ -1,10 +1,4 @@
-import {
-  SafeAreaView,
-  StyleSheet,
-  StatusBar,
-  View,
-  ScrollView,
-} from "react-native";
+import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
 import { useFonts } from "expo-font";
 import GitHubProfile from "./screens/GitHubProfile";
 import * as SplashScreen from "expo-splash-screen";

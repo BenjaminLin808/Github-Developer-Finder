@@ -4,11 +4,38 @@ import Location from "../../components/Location";
 import Company from "../../components/Company";
 import Website from "../../components/Website";
 import Twitter from "../../components/Twitter";
+import NotFound from "../../components/NotFound";
 
 const Card = ({ user, error, loading }) => {
   // when loading is true, return null
   if (loading) {
-    return null;
+    return (
+      <View
+        style={{
+          ...styles.card,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <MyText>Searching ...</MyText>
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View
+        style={{
+          ...styles.card,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <NotFound />
+        <MyText>There's no such a profile</MyText>
+        <MyText>Or something else is wrong</MyText>
+      </View>
+    );
   }
   return (
     <View style={styles.card}>
