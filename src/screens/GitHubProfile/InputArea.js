@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, Image, TextInput, Pressable, StyleSheet } from "react-native";
-import { MyText, MyTextBold } from "../../components/MyText";
+import { MyText, MyTextBold } from "components/MyText";
 
 const InputArea = ({ searchUser, loading }) => {
   const [username, setUsername] = useState("");
@@ -13,7 +13,7 @@ const InputArea = ({ searchUser, loading }) => {
     <View style={styles.inputArea}>
       <View style={styles.input}>
         <Image
-          source={require("../../assets/images/icon-search.png")}
+          source={require("../../../assets/images/icon-search.png")}
           style={{ marginRight: 10 }}
         />
         <TextInput

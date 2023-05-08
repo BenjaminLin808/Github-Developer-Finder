@@ -1,10 +1,10 @@
 import { View, StyleSheet, Image } from "react-native";
-import { MyTextBold, MyText } from "../../components/MyText";
-import Location from "../../components/Location";
-import Company from "../../components/Company";
-import Website from "../../components/Website";
-import Twitter from "../../components/Twitter";
-import NotFound from "../../components/NotFound";
+import { MyTextBold, MyText } from "components/MyText";
+import Location from "components/Location";
+import Company from "components/Company";
+import Website from "components/Website";
+import Twitter from "components/Twitter";
+import NotFound from "components/NotFound";
 
 const Card = ({ user, error, loading }) => {
   // when loading is true, return null
@@ -39,7 +39,7 @@ const Card = ({ user, error, loading }) => {
   }
   return (
     <View style={styles.card}>
-      <View style={{ flexDirection: "row" }}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
         <Image source={{ uri: user.avatar_url }} style={styles.avatar} />
         <View>
           <MyTextBold style={{ fontSize: 24 }}>

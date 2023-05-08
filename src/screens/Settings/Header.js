@@ -1,10 +1,10 @@
 import { View } from "react-native";
-import { MyTextBold } from "../../components/MyText";
+import { MyTextBold } from "components/MyText";
 
 const Header = () => {
   return (
     <View>
-      <MyTextBold style={{ fontSize: 30 }}>devfinder</MyTextBold>
+      <MyTextBold style={{ fontSize: 30 }}>devfinder : Settings</MyTextBold>
     </View>
   );
 };
