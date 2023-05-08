@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react-native";
-import Card from "../../../screens/GitHubProfile/Card";
+import Card from "../../../src/screens/GitHubProfile/Card";
 
 // test if loading is true, and the loading message is displayed
 test("test if loading is true, and the loading message is displayed", () => {

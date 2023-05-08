@@ -1,5 +1,5 @@
 import { render, waitFor, fireEvent } from "@testing-library/react-native";
-import InputArea from "../../../screens/GitHubProfile/InputArea";
+import InputArea from "../../../src/screens/GitHubProfile/InputArea";
 
 // test if the search button can trigger the setUser function
 test("test if the search button can trigger the searchUser function", async () => {

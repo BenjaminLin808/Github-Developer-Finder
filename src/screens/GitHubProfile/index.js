@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, Text, TextInput, Button, ActivityIndicator } from "react-native";
-// import { Card, Image } from 'react-native-elements';
 import axios from "axios";
 
 import Header from "./Header";
@@ -34,6 +33,15 @@ const GitHubProfile = () => {
 
     setLoading(false);
   };
+
+  // preload a profile
+  useEffect(() => {
+    const preloadProfile = () => {
+      searchUser("octocat");
+    };
+
+    preloadProfile();
+  }, []);
 
   return (
     <View style={{ paddingHorizontal: 20 }}>

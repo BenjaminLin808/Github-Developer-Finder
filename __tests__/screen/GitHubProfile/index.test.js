@@ -1,5 +1,5 @@
 import { render, waitFor, fireEvent } from "@testing-library/react-native";
-import GitHubProfile from "../../../screens/GitHubProfile";
+import GitHubProfile from "../../../src/screens/GitHubProfile";
 
 // test if a search can successfully be made, and results are displayed
 test("test if a search can successfully be made, and results are displayed", async () => {
