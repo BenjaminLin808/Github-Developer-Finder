@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { View, Text, TextInput, Button, ActivityIndicator } from "react-native";
 import axios from "axios";
 
+import Main from "../../layout/Main";
 import Header from "./Header";
 import InputArea from "./InputArea";
 import Card from "./Card";
@@ -44,11 +45,11 @@ const GitHubProfile = () => {
   }, []);
 
   return (
-    <View style={{ paddingHorizontal: 20 }}>
+    <Main>
       <Header />
       <InputArea searchUser={searchUser} loading={loading} />
       {user ? <Card user={user} loading={loading} error={error} /> : <></>}
-    </View>
+    </Main>
   );
 };
 
