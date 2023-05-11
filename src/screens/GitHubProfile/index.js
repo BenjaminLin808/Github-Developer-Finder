@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { View, Text, TextInput, Button, ActivityIndicator } from "react-native";
 import axios from "axios";
 
-import Main from "../../layout/Main";
+import Main from "layouts/Main";
 import Header from "./Header";
 import InputArea from "./InputArea";
 import Card from "./Card";

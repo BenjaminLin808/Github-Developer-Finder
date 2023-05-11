@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, Image, TextInput, Pressable, StyleSheet } from "react-native";
-import { MyText, MyTextBold } from "components/MyText";
+import { Text, TextBold } from "components/theme/Text";
 
 const InputArea = ({ searchUser, loading }) => {
   const [username, setUsername] = useState("");
@@ -37,7 +37,7 @@ const InputArea = ({ searchUser, loading }) => {
           handleSubmit();
         }}
       >
-        <MyTextBold>Search</MyTextBold>
+        <TextBold>Search</TextBold>
       </Pressable>
     </View>
   );

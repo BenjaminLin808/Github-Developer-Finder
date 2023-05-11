@@ -1,4 +1,4 @@
-import Navigation from "./navigation";
+import Navigation from "./navigations/Navigation";
 
 const App = () => {
   return <Navigation />;

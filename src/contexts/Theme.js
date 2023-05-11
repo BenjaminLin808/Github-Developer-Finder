@@ -1,9 +1,10 @@
 import { createContext } from "react";
 import Colors from "constants/Colors";
 
-const ThemeContext = createContext({
+const Theme = createContext({
   theme: "light",
   setTheme: () => {},
+  colors: Colors.light,
 });
 
 const ThemeProvider = ({ children }) => {
@@ -11,10 +12,10 @@ const ThemeProvider = ({ children }) => {
   const colors = Colors[theme];
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, colors }}>
+    <Theme.Provider value={{ theme, setTheme, colors }}>
       {children}
-    </ThemeContext.Provider>
+    </Theme.Provider>
   );
 };
 
-export { ThemeContext, ThemeProvider };
+export { Theme, ThemeProvider };

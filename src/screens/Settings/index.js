@@ -1,16 +1,9 @@
 import { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Button,
-  ActivityIndicator,
-  Pressable,
-  StyleSheet,
-} from "react-native";
+import { View, Pressable, StyleSheet } from "react-native";
 
 import Header from "./Header";
-import MyText from "components/MyText";
+import Text from "components/theme/Text";
+import Main from "layouts/Main";
 
 const Settings = () => {
   const [theme, setTheme] = useState("dark"); // ["dark", "light"]
@@ -24,7 +17,7 @@ const Settings = () => {
   }, [theme]);
 
   return (
-    <View style={{ paddingHorizontal: 20 }}>
+    <Main>
       <Header />
       <Pressable style={styles.button} onPress={() => handleTheme("dark")}>
         <View
@@ -35,7 +28,7 @@ const Settings = () => {
               : {},
           ]}
         ></View>
-        <MyText style={{ fontSize: 25 }}>dark</MyText>
+        <Text style={{ fontSize: 25 }}>dark</Text>
       </Pressable>
       <View style={styles.line}></View>
       <Pressable style={styles.button} onPress={() => handleTheme("light")}>
@@ -47,9 +40,9 @@ const Settings = () => {
               : {},
           ]}
         ></View>
-        <MyText style={{ fontSize: 25 }}>light</MyText>
+        <Text style={{ fontSize: 25 }}>light</Text>
       </Pressable>
-    </View>
+    </Main>
   );
 };
 
