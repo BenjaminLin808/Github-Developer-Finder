@@ -2,9 +2,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import BottomTabs from "./BottomTabs";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
-// SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync();
 
 const Navigation = () => {
   const [fontsLoaded] = useFonts({
@@ -12,10 +12,13 @@ const Navigation = () => {
     "SpaceMono-Bold": require("../../assets/fonts/SpaceMono-Bold.ttf"),
   });
 
-  useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
+  useEffect(() => {
+    const temp = async () => {
+      if (fontsLoaded) {
+        await SplashScreen.hideAsync();
+      }
+    };
+    temp();
   }, [fontsLoaded]);
 
   if (!fontsLoaded) {
