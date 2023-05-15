@@ -1,8 +1,9 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import BottomTabs from "./BottomTabs";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useEffect } from "react";
+import useTheme from "hooks/useTheme";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -11,6 +12,18 @@ const Navigation = () => {
     "SpaceMono-Regular": require("../../assets/fonts/SpaceMono-Regular.ttf"),
     "SpaceMono-Bold": require("../../assets/fonts/SpaceMono-Bold.ttf"),
   });
+
+  const { theme, setTheme, colors } = useTheme();
+
+  const Theme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: colors.primary,
+      background: colors.background,
+      text: colors.text,
+    },
+  };
 
   useEffect(() => {
     const temp = async () => {
@@ -25,7 +38,7 @@ const Navigation = () => {
     return null;
   }
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={Theme}>
       <BottomTabs />
     </NavigationContainer>
   );

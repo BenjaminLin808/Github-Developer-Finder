@@ -1,12 +1,14 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import Colors from "constants/Colors";
 
+// theme initialization
 const Theme = createContext({
   theme: "light",
   setTheme: () => {},
   colors: Colors.light,
 });
 
+// theme provider initialization
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
   const colors = Colors[theme];
@@ -18,4 +20,5 @@ const ThemeProvider = ({ children }) => {
   );
 };
 
+export default Theme;
 export { Theme, ThemeProvider };
