@@ -1,6 +1,7 @@
-import { StyleSheet, StatusBar, ScrollView } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 import useTheme from "hooks/useTheme";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from "components/theme";
 
 const Main = ({ children }) => {
   const { colors } = useTheme();

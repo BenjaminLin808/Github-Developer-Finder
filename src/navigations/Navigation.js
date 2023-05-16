@@ -29,14 +29,18 @@ const Navigation = () => {
 
   useEffect(() => {
     const temp = async () => {
-      if (fontsLoaded) {
+      if (fontsLoaded && !theme.loading) {
         await SplashScreen.hideAsync();
       }
     };
     temp();
-  }, [fontsLoaded]);
+  }, [fontsLoaded, theme.loading]);
 
   if (!fontsLoaded) {
+    return null;
+  }
+
+  if (theme.loading) {
     return null;
   }
   return (
