@@ -3,12 +3,13 @@ import { Ionicons } from "@expo/vector-icons";
 
 import GitHubProfile from "screens/GitHubProfile";
 import Settings from "screens/Settings";
+
 import useTheme from "hooks/useTheme";
 
 const Tab = createBottomTabNavigator();
 
-const TabIcon = (name, color) => {
-  return <Ionicons name={name} size={32} color={color} />;
+const TabIcon = ({ name, color, size }) => {
+  return <Ionicons name={name} size={size} color={color} />;
 };
 
 const BottomTabs = () => {
@@ -17,29 +18,38 @@ const BottomTabs = () => {
     <Tab.Navigator
       initialRouteName="GitHubProfile"
       screenOptions={{
-        tabBarActiveTintColor: "colors.textMidContrast",
-        tabBarInactiveTintColor: "colors.primary",
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.textMidContrast,
+        tabBarStyle: { backgroundColor: colors.background, borderTopWidth: 0 },
       }}
-      tabBarStyle={{ backgroundColor: colors.background }}
     >
       <Tab.Screen
         name="GitHubProfile"
         component={GitHubProfile}
         options={{
           title: "GitHubProfile",
-          tabBarIcon: () => (
-            <TabIcon name="ribbon-outline" color={colors.primary} />
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              name="ribbon-outline"
+              color={focused ? colors.primary : colors.textMidContrast}
+              size={25}
+            />
           ),
           headerShown: false,
         }}
       />
+
       <Tab.Screen
         name="Settings"
         component={Settings}
         options={{
           title: "Settings",
-          tabBarIcon: () => (
-            <TabIcon name="settings-outline" color={colors.primary} />
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              name="settings-outline"
+              color={focused ? colors.primary : colors.textMidContrast}
+              size={25}
+            />
           ),
           headerShown: false,
         }}

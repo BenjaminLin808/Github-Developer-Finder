@@ -21,7 +21,9 @@ const Navigation = () => {
       ...DefaultTheme.colors,
       primary: colors.primary,
       background: colors.background,
+      card: colors.background,
       text: colors.text,
+      border: "transparent",
     },
   };
 

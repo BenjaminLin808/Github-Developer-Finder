@@ -1,12 +1,13 @@
-import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
+import { StyleSheet, StatusBar, ScrollView } from "react-native";
 import useTheme from "hooks/useTheme";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Main = ({ children }) => {
   const { colors } = useTheme();
   return (
     <>
       <StatusBar barStyle="light-content" />
-      <SafeAreaView style={styles.container && colors.background}>
+      <SafeAreaView style={styles.container}>
         <ScrollView
           style={styles.subContainer}
           keyboardShouldPersistTaps="handled"
@@ -21,7 +22,6 @@ const Main = ({ children }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#141d2f",
   },
   subContainer: {
     padding: 20,

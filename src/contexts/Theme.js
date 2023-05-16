@@ -10,7 +10,7 @@ const Theme = createContext({
 
 // theme provider initialization
 const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const colors = Colors[theme];
 
   return (
