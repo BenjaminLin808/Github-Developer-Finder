@@ -4,7 +4,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "components/theme";
 
 const Main = ({ children }) => {
-  const { colors } = useTheme();
   return (
     <>
       <StatusBar barStyle="light-content" />

@@ -13,7 +13,7 @@ const Navigation = () => {
     "SpaceMono-Bold": require("../../assets/fonts/SpaceMono-Bold.ttf"),
   });
 
-  const { theme, setTheme, colors } = useTheme();
+  const { theme, colors, loading } = useTheme();
 
   const Theme = {
     ...DefaultTheme,
@@ -40,9 +40,10 @@ const Navigation = () => {
     return null;
   }
 
-  if (theme.loading) {
+  if (loading) {
     return null;
   }
+
   return (
     <NavigationContainer theme={Theme}>
       <BottomTabs />
