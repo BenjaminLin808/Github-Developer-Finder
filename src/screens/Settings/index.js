@@ -4,9 +4,10 @@ import { View, Pressable, StyleSheet } from "react-native";
 import Header from "./Header";
 import Text from "components/theme/Text";
 import Main from "layouts/Main";
+import useTheme from "hooks/useTheme";
 
 const Settings = () => {
-  const [theme, setTheme] = useState("dark"); // ["dark", "light"]
+  const { theme, setTheme } = useTheme(); // ["dark", "light"]
 
   const handleTheme = (curTheme) => {
     if (curTheme !== theme) setTheme(curTheme);
