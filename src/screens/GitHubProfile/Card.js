@@ -5,8 +5,11 @@ import Company from "components/svgr/Company";
 import Website from "components/svgr/Website";
 import Twitter from "components/svgr/Twitter";
 import NotFound from "components/svgr/NotFound";
+import useTheme from "hooks/useTheme";
 
 const Card = ({ user, error, loading }) => {
+  const { colors } = useTheme();
+
   // when loading is true, return null
   if (loading) {
     return (
@@ -38,7 +41,7 @@ const Card = ({ user, error, loading }) => {
     );
   }
   return (
-    <View style={styles.card}>
+    <View style={{ ...styles.card, color: colors.backgroundSecondary }}>
       <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
         <Image source={{ uri: user.avatar_url }} style={styles.avatar} />
         <View>
@@ -123,7 +126,7 @@ const Card = ({ user, error, loading }) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#1e2a47",
+    // backgroundColor: "#1e2a47",
     borderRadius: 10,
     padding: 30,
     marginTop: 30,

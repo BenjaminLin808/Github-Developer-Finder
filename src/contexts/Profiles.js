@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createContext, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const ProfilesContext = createContext({
   profiles: [],
@@ -8,7 +8,7 @@ const ProfilesContext = createContext({
   setActiveProfile: () => {},
 });
 
-const ProfilesProvider = () => {
+const ProfilesProvider = ({ children }) => {
   const [profiles, setProfiles] = useState([]);
   const [activeProfile, setActiveProfile] = useState({});
 
@@ -16,6 +16,17 @@ const ProfilesProvider = () => {
   useEffect(() => {
     AsyncStorage.setItem("profiles", JSON.stringify(profiles));
   }, [profiles]);
+
+  // get all profiles when the app loads
+  useEffect(() => {
+    const getProfiles = async () => {
+      const profiles = await AsyncStorage.getItem("profiles");
+      if (profiles) {
+        setProfiles(JSON.parse(profiles));
+      }
+    };
+    getProfiles();
+  }, []);
 
   return (
     <ProfilesContext.Provider
@@ -25,3 +36,5 @@ const ProfilesProvider = () => {
     </ProfilesContext.Provider>
   );
 };
+
+export { ProfilesProvider, ProfilesContext };

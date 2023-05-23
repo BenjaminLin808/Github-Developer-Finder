@@ -3,6 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import GitHubProfile from "screens/GitHubProfile";
 import Settings from "screens/Settings";
+import GitHubProfiles from "screens/GitHubProfiles";
 
 import useTheme from "hooks/useTheme";
 
@@ -31,6 +32,22 @@ const BottomTabs = () => {
           tabBarIcon: ({ focused }) => (
             <TabIcon
               name="ribbon-outline"
+              color={focused ? colors.primary : colors.textMidContrast}
+              size={25}
+            />
+          ),
+          headerShown: false,
+        }}
+      />
+
+      <Tab.Screen
+        name="Profiles"
+        component={GitHubProfiles}
+        options={{
+          title: "Profiles",
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              name="apps-outline"
               color={focused ? colors.primary : colors.textMidContrast}
               size={25}
             />
