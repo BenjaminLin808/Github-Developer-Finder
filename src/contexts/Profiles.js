@@ -10,7 +10,7 @@ const ProfilesContext = createContext({
 
 const ProfilesProvider = ({ children }) => {
   const [profiles, setProfiles] = useState([]);
-  const [activeProfile, setActiveProfile] = useState({});
+  const [activeProfile, setActiveProfile] = useState("");
 
   // update profiles when profiles change
   useEffect(() => {

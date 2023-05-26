@@ -4,13 +4,28 @@ import { Icon } from "../../components/theme";
 import useProfiles from "hooks/useProfiles";
 import useTheme from "hooks/useTheme";
 
-const Header = () => {
+const Header = ({ user }) => {
   const { colors } = useTheme();
-  const { profiles, activeProfile } = useProfiles();
+  const { profiles, setProfiles, activeProfile } = useProfiles();
+
   const findProfile = () => {
     const res = profiles.some((profile) => profile.login === activeProfile);
     return res;
   };
+
+  const addProfile = () => {
+    setProfiles((curProfiles) => {
+      return [
+        ...curProfiles,
+        {
+          login: user.login,
+          avatar_url: user.avatar_url,
+          name: user.name,
+        },
+      ];
+    });
+  };
+
   return (
     <View style={styles.header}>
       <TextBold style={{ fontSize: 30, color: colors.text }}>
@@ -19,7 +34,7 @@ const Header = () => {
       {findProfile() ? (
         <Icon name="checkmark-circle" color="green" />
       ) : (
-        <Pressable>
+        <Pressable onPress={addProfile}>
           <Icon name="add-circle-outline" size={30} color={colors.text} />
         </Pressable>
       )}

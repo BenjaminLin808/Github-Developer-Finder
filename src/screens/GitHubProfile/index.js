@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { View, Text, TextInput, Button, ActivityIndicator } from "react-native";
 import axios from "axios";
+import useProfiles from "hooks/useProfiles";
 
 import Main from "layouts/Main";
 import Header from "./Header";
 import InputArea from "./InputArea";
 import Card from "./Card";
+import NotFound from "components/svgr/NotFound";
 
 const GitHubProfile = () => {
+  const { setActiveProfile } = useProfiles();
   // user state: used to store user information
   const [user, setUser] = useState("");
 
@@ -27,8 +30,8 @@ const GitHubProfile = () => {
         `https://api.github.com/users/${username}`
       );
       setUser(response.data);
+      setActiveProfile(username);
     } catch (error) {
-      console.error(error);
       setError(error.message);
     }
 
@@ -46,9 +49,13 @@ const GitHubProfile = () => {
 
   return (
     <Main>
-      <Header />
+      <Header user={user} />
       <InputArea searchUser={searchUser} loading={loading} />
-      {user ? <Card user={user} loading={loading} error={error} /> : <></>}
+      {user ? (
+        <Card user={user} loading={loading} error={error} />
+      ) : (
+        <NotFound></NotFound>
+      )}
     </Main>
   );
 };
